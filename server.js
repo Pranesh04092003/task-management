@@ -16,9 +16,13 @@ db.once('open', () => console.log('Connected to MongoDB'));
 app.use(cors());
 app.use(express.json());
 
+// Default route
+app.get('/', (req, res) => {
+    res.send('Server is running successfully!');
+});
+
 // Routes
 app.use('/api/users', require('./src/routes/userRoutes'));
-
 app.use('/api/tasks', require('./src/routes/taskRoutes'));
 
 const PORT = 7000;
